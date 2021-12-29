@@ -27,11 +27,19 @@ pacman -S reflector base-devel linux-headers xdg-user-dirs mtools dosfstools os-
 # Network
 pacman -S networkmanager network-manager-applet wpa_supplicant iptables-nft ipset
 
+# Shell Tools
+pacman -S --noconfirm \
+        pacman-contrib \
+        wget \
+        git \
+        less \
+        zsh 
+        
 # Audio 
-pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack alsa-utils
+pacman -S --noconfirm pipewire pipewire-alsa pipewire-pulse pipewire-jack alsa-utils
 
 # Utilities 
-pacman -S avahi dnsutils xdg-user-dirs xdg-utils dnsutils bluez bluez-utils cups 
+pacman -S --noconfirm avahi dnsutils xdg-user-dirs xdg-utils dnsutils bluez bluez-utils cups 
 
 # pacman -S --noconfirm xf86-video-amdgpu
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
