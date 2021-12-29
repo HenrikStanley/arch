@@ -58,7 +58,7 @@ btrfs su cr /mnt/@snapshots
 umount /mnt  
 
 ### mount root  
-mount -o noatime,compress=lzo,space_cache,subvol=@ /dev/{Main-Partition-Label} /mnt  
+mount -o noatime,compress=lzo,space_cache=v2,ssd,discard=async,subvol=@ /dev/{Main-Partition-Label} /mnt  
 mkdir -p /mnt/{boot,home,var,.snapshots}  
 
 ### mount home, var and snapshots
