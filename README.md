@@ -48,3 +48,22 @@ mkfs.btrfs dev/{Main-Partition-Label}
 
 Mount root directory into the /mnt installation directory  
 mount dev/{Main-Partition-Label} /mnt  
+
+btrfs su cr /mnt/@  
+btrfs su cr /mnt/@home  
+btrfs su cr /mnt/@var  
+btrfs su cr /mnt/@snapshots  
+
+umount /mnt  
+
+### mount root  
+mount -o noatime,compress=lzo,space_cache,subvol=@ /dev/{Main-Partition-Label} /mnt  
+mkdir -p /mnt/{boot,home,var,.snapshots}  
+
+### mount home, var and snapshots
+mount -o noatime,compress=lzo,space_cache,subvol=@home /dev/{Main-Partition-Label} /mnt/home  
+mount -o noatime,compress=lzo,space_cache,subvol=@var /dev/{Main-Partition-Label} /mnt/var  
+mount -o noatime,compress=lzo,space_cache,subvol=@snapshots /dev/{Main-Partition-Label} /mnt/.snapshots  
+
+### mount EFI  
+mount /dev/{EFI-Partition-Label} /mount/boot  
