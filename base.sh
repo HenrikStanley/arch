@@ -2,14 +2,17 @@
 
 ln -sf /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
 hwclock --systohc
-sed -i '177s/.//' /etc/locale.gen
+
+# edit file instead
+# sed -i '177s/.//' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=dk-latin1" >> /etc/vconsole.conf
-echo "arch-ws" >> /etc/hostname
+echo "vetinari" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
-echo "127.0.1.1 arch-ws.localdomain arch-ws" >> /etc/hosts
+echo "127.0.1.1 vetinari.localdomain vetinari" >> /etc/hosts
+# passwd
 echo root:password | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
@@ -19,6 +22,8 @@ pacman -S grub efibootmgr networkmanager network-manager-applet dialog wpa_suppl
 
 # pacman -S --noconfirm xf86-video-amdgpu
 # pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+# Install systemd-boot
+bootctl --path=/boot install
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
