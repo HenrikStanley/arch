@@ -1,52 +1,53 @@
 # Command line help to install base system  
 
-Check system has an IP  
+### Check system has an IP  
 ip -a  
 
-Update mirrors for speed  
+### Update mirrors for speed  
 pacman -S reflector  
 
 reflector -c Denmark -a 6 --sort rate --save /etc/pacman.d/mirrorlist  
+
 pacman -Syyy  
 
-Set system time  
+### Set system time  
 timedatectl set-ntp true  
 
-Check disk labels  
+### Check disk labels  
 lsblk  
 
-Mount a disk  
+### Mount a disk  
 fdisk /dev/{DiskLabel}  
 
-Fdisk commands:  
-Create a disk label  
+### Fdisk commands:  
+#### Create a disk label  
 g  
 
-Create new partition for boot at 500 MB size and set the type to EFI  
+#### Create new partition for boot at 500 MB size and set the type to EFI  
 n  
 +500M  
 t  
 1  
 
-Create new partition for root  
+### Create new partition for root  
 n  
 Enter for partition number  
 Enter for first sector  
 Enter for end sector  
 
-Write changes to disk
+### Write changes to disk
 w
 
-Show new disk labels  
+### Show new disk labels  
 lsblk  
 
-Format EFI partition with fat32  
+### Format EFI partition with fat32  
 mkfs.fat -F32 /dev/{EFI-Partition-Label}  
 
-Format Main partition with btrfs  
+### Format Main partition with btrfs  
 mkfs.btrfs dev/{Main-Partition-Label}  
 
-Mount root directory into the /mnt installation directory  
+### Mount root directory into the /mnt installation directory  
 mount dev/{Main-Partition-Label} /mnt  
 
 btrfs su cr /mnt/@  
@@ -67,3 +68,6 @@ mount -o noatime,compress=lzo,space_cache,subvol=@snapshots /dev/{Main-Partition
 
 ### mount EFI  
 mount /dev/{EFI-Partition-Label} /mount/boot  
+
+
+### install base system
