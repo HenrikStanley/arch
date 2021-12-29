@@ -71,3 +71,10 @@ mount /dev/{EFI-Partition-Label} /mount/boot
 
 
 ### install base system
+pacstrap /mnt base linux linux-firmware nvim snapper  
+
+### generate filesystem table 
+genfstab -U /mnt >> /mnt/etc/fstab  
+
+### enter installation
+arch-chroot /mnt
