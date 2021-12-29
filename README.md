@@ -1,7 +1,7 @@
-# Command line help to install base system
+# Command line help to install base system  
 
-Check system has an IP
-ip -a
+Check system has an IP  
+ip -a  
 
 Update mirrors for speed  
 pacman -S reflector  
