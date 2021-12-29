@@ -56,7 +56,7 @@ systemctl enable fstrim.timer
 
 useradd -m stanley
 echo stanley:password | chpasswd
-usermod -aG libvirt stanley
+# usermod -aG libvirt stanley
 
 echo "stanley ALL=(ALL) ALL" >> /etc/sudoers.d/ermanno
 
