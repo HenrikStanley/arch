@@ -42,10 +42,10 @@ w
 lsblk  
 
 ### Format EFI partition with fat32  
-mkfs.fat -F32 /dev/{EFI-Partition-Label}  
+mkfs.fat -F32 -n EFI /dev/{EFI-Partition-Label}  
 
 ### Format Main partition with btrfs  
-mkfs.btrfs dev/{Main-Partition-Label}  
+mkfs.btrfs -L ROOT dev/{Main-Partition-Label}  
 
 ### Mount root directory into the /mnt installation directory  
 mount dev/{Main-Partition-Label} /mnt  
@@ -62,9 +62,9 @@ mount -o noatime,compress=lzo,space_cache,subvol=@ /dev/{Main-Partition-Label} /
 mkdir -p /mnt/{boot,home,var,.snapshots}  
 
 ### mount home, var and snapshots
-mount -o noatime,compress=lzo,space_cache,subvol=@home /dev/{Main-Partition-Label} /mnt/home  
-mount -o noatime,compress=lzo,space_cache,subvol=@var /dev/{Main-Partition-Label} /mnt/var  
-mount -o noatime,compress=lzo,space_cache,subvol=@snapshots /dev/{Main-Partition-Label} /mnt/.snapshots  
+mount -o noatime,compress=lzo,space_cache,ssd,subvol=@home /dev/{Main-Partition-Label} /mnt/home  
+mount -o noatime,compress=lzo,space_cache,ssd,subvol=@var /dev/{Main-Partition-Label} /mnt/var  
+mount -o noatime,compress=lzo,space_cache,ssd,subvol=@snapshots /dev/{Main-Partition-Label} /mnt/.snapshots  
 
 ### mount EFI  
 mount /dev/{EFI-Partition-Label} /mount/boot  
