@@ -45,7 +45,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable cups.service
-systemctl enable sshd
+#systemctl enable sshd
 systemctl enable avahi-daemon
 #systemctl enable tlp # You can comment this command out if you didn't install tlp, see above (used for battery savings)
 systemctl enable reflector.timer
