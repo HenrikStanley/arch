@@ -62,9 +62,9 @@ mount -o noatime,compress=lzo,space_cache,subvol=@ /dev/{Main-Partition-Label} /
 mkdir -p /mnt/{boot,home,var,.snapshots}  
 
 ### mount home, var and snapshots
-mount -o noatime,compress=lzo,space_cache,ssd,discard=async,subvol=@home /dev/{Main-Partition-Label} /mnt/home  
-mount -o noatime,compress=lzo,space_cache,ssd,discard=async,subvol=@var /dev/{Main-Partition-Label} /mnt/var  
-mount -o noatime,compress=lzo,space_cache,ssd,discard=async,subvol=@snapshots /dev/{Main-Partition-Label} /mnt/.snapshots  
+mount -o noatime,compress=lzo,space_cache=v2,ssd,discard=async,subvol=@home /dev/{Main-Partition-Label} /mnt/home  
+mount -o noatime,compress=lzo,space_cache=v2,ssd,discard=async,subvol=@var /dev/{Main-Partition-Label} /mnt/var  
+mount -o noatime,compress=lzo,space_cache=v2,ssd,discard=async,subvol=@snapshots /dev/{Main-Partition-Label} /mnt/.snapshots  
 
 ### mount EFI  
 mount /dev/{EFI-Partition-Label} /mount/boot  
