@@ -5,6 +5,8 @@ sudo reflector -c Denmark -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 sudo pacman -S xorg-server xorg-xinit xterm awesome
 echo “exec awesome” > ~/.xinitrc
 
+sudo pacman -S firefox alacritty
+
 # Options
 aur_helper=true
 
